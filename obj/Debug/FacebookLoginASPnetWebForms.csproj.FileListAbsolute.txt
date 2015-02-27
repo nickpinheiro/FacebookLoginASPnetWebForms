@@ -1,0 +1,6 @@
+C:\Users\nichpin\Documents\Visual Studio 2013\Projects\FacebookLoginASPnetWebForms\FacebookLoginASPnetWebForms\bin\FacebookLoginASPnetWebForms.dll.config
+C:\Users\nichpin\Documents\Visual Studio 2013\Projects\FacebookLoginASPnetWebForms\FacebookLoginASPnetWebForms\bin\FacebookLoginASPnetWebForms.dll
+C:\Users\nichpin\Documents\Visual Studio 2013\Projects\FacebookLoginASPnetWebForms\FacebookLoginASPnetWebForms\bin\FacebookLoginASPnetWebForms.pdb
+C:\Users\nichpin\Documents\Visual Studio 2013\Projects\FacebookLoginASPnetWebForms\FacebookLoginASPnetWebForms\obj\Debug\FacebookLoginASPnetWebForms.dll
+C:\Users\nichpin\Documents\Visual Studio 2013\Projects\FacebookLoginASPnetWebForms\FacebookLoginASPnetWebForms\obj\Debug\FacebookLoginASPnetWebForms.pdb
+C:\Users\nichpin\Documents\Visual Studio 2013\Projects\FacebookLoginASPnetWebForms\FacebookLoginASPnetWebForms\obj\Debug\FacebookLoginASPnetWebForms.csprojResolveAssemblyReference.cache
