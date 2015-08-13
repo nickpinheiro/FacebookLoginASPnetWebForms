@@ -9,4 +9,3 @@ C:\Projects\FacebookLoginASPnetWebForms\FacebookLoginASPnetWebForms\bin\Facebook
 C:\Projects\FacebookLoginASPnetWebForms\FacebookLoginASPnetWebForms\bin\FacebookLoginASPnetWebForms.pdb
 C:\Projects\FacebookLoginASPnetWebForms\FacebookLoginASPnetWebForms\obj\Debug\FacebookLoginASPnetWebForms.dll
 C:\Projects\FacebookLoginASPnetWebForms\FacebookLoginASPnetWebForms\obj\Debug\FacebookLoginASPnetWebForms.pdb
-C:\Projects\FacebookLoginASPnetWebForms\FacebookLoginASPnetWebForms\obj\Debug\FacebookLoginASPnetWebForms.csprojResolveAssemblyReference.cache
