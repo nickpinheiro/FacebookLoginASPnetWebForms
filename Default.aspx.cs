@@ -12,7 +12,7 @@ namespace FacebookLoginASPnetWebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            HyperLink1.NavigateUrl = "https://www.facebook.com/v2.0/dialog/oauth/?client_id=" + ConfigurationManager.AppSettings["FacebookAppId"] + "&redirect_uri=http://" + Request.ServerVariables["SERVER_NAME"] + ":" + Request.ServerVariables["SERVER_PORT"] + "/account/user.aspx&response_type=code&state=1";
+            HyperLink1.NavigateUrl = "https://www.facebook.com/v2.4/dialog/oauth/?client_id=" + ConfigurationManager.AppSettings["FacebookAppId"] + "&redirect_uri=http://" + Request.ServerVariables["SERVER_NAME"] + ":" + Request.ServerVariables["SERVER_PORT"] + "/account/user.aspx&response_type=code&state=1";
             HyperLink1.Text = "Login with Facebook";
         }
     }

@@ -33,11 +33,6 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Username:</td>
-                            <td><%# Eval("username") %><br />
-                            </td>
-                        </tr>
-                        <tr>
                             <td>Gender:</td>
                             <td><%# Eval("gender") %><br />
                             </td>
