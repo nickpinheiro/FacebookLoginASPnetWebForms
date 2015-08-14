@@ -53,7 +53,7 @@ namespace FacebookLoginASPnetWebForms.account
             string extendedAccessToken = eatWords[0];
 
             // Request the Facebook user information
-            Uri targetUserUri = new Uri("https://graph.facebook.com/me?fields=first_name,last_name,email,gender,link,locale&access_token=" + accessToken);
+            Uri targetUserUri = new Uri("https://graph.facebook.com/me?fields=first_name,last_name,gender,link,locale,email&access_token=" + accessToken);
             HttpWebRequest user = (HttpWebRequest)HttpWebRequest.Create(targetUserUri);
 
             // Read the returned JSON object response
