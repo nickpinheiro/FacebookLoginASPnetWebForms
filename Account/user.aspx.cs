@@ -38,8 +38,8 @@ namespace FacebookLoginASPnetWebForms.account
             string token = str.ReadToEnd().ToString().Replace("access_token=", "");
 
             // Split the access token and expiration from the single string
-            string[] combined = token.Split('&');
-            string accessToken = combined[0];
+            string[] combined = token.Split('\"');
+            string accessToken = combined[3];
 
             // Exchange the code for an extended access token
             Uri eatTargetUri = new Uri("https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&client_id=" + ConfigurationManager.AppSettings["FacebookAppId"] + "&client_secret=" + ConfigurationManager.AppSettings["FacebookAppSecret"] + "&fb_exchange_token=" + accessToken);
@@ -49,8 +49,8 @@ namespace FacebookLoginASPnetWebForms.account
             string eatToken = eatStr.ReadToEnd().ToString().Replace("access_token=", "");
 
             // Split the access token and expiration from the single string
-            string[] eatWords = eatToken.Split('&');
-            string extendedAccessToken = eatWords[0];
+            string[] eatWords = eatToken.Split('\"');
+            string extendedAccessToken = eatWords[3];
 
             // Request the Facebook user information
             Uri targetUserUri = new Uri("https://graph.facebook.com/me?fields=first_name,last_name,gender,locale,link&access_token=" + accessToken);
