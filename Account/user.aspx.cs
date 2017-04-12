@@ -27,7 +27,33 @@ namespace FacebookLoginASPnetWebForms.account
                 ListView1.DataBind();
             }
         }
+        
+        protected string CreateTokenProof(string token, string secret)
+        {
+            
+            System.Text.ASCIIEncoding encoding = new System.Text.ASCIIEncoding();
+            
+            // Convert the app secret to byte and declare SHA256 hash
+            byte[] secretByte = encoding.GetBytes(secret);
+            HMACSHA256 hmacsha256 = new HMACSHA256(secretByte);
 
+            // Convert the access token to byte and compute it to hash
+            byte[] tokenBytes = encoding.GetBytes(token);
+            byte[] hashmessage = hmacsha256.ComputeHash(tokenBytes);
+
+
+            // Convert the hash to string
+            string tokenProof = "";
+            for (int i = 0; i < hashmessage.Length; i++)
+            {
+                tokenProof += hashmessage[i].ToString("X2"); // hex format
+            }
+
+            // Return the token proof in lowercase which is acceptable by Facebook Graph API
+            return tokenProof.ToLower();
+            
+        }
+        
         protected List<Facebook.User> GetFacebookUserData(string code)
         {
             // Exchange the code for an access token
@@ -51,9 +77,12 @@ namespace FacebookLoginASPnetWebForms.account
             // Split the access token and expiration from the single string
             string[] eatWords = eatToken.Split('\"');
             string extendedAccessToken = eatWords[3];
+            
+            // Create Token Proof
+            string appsecretProof = CreateTokenProof(accessToken, ConfigurationManager.AppSettings["FacebookAppSecret"]);
 
             // Request the Facebook user information
-            Uri targetUserUri = new Uri("https://graph.facebook.com/me?fields=first_name,last_name,gender,locale,link&access_token=" + accessToken);
+            Uri targetUserUri = new Uri("https://graph.facebook.com/me?fields=first_name,last_name,gender,locale,link&access_token=" + accessToken + "&appsecret_proof=" + appsecretProof);
             HttpWebRequest user = (HttpWebRequest)HttpWebRequest.Create(targetUserUri);
 
             // Read the returned JSON object response
