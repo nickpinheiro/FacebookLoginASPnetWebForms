@@ -41,8 +41,15 @@ namespace FacebookLoginASPnetWebForms.account
             string[] combined = token.Split('&');
             string accessToken = combined[0];
 
+            JavaScriptSerializer sr = new JavaScriptSerializer();
+            Facebook.AccessToken accessTokenInfo = sr.Deserialize<Facebook.AccessToken>(accessToken);
+
             // Exchange the code for an extended access token
-            Uri eatTargetUri = new Uri("https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&client_id=" + ConfigurationManager.AppSettings["FacebookAppId"] + "&client_secret=" + ConfigurationManager.AppSettings["FacebookAppSecret"] + "&fb_exchange_token=" + accessToken);
+            Uri eatTargetUri = new Uri("https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&client_id=" 
+                + ConfigurationManager.AppSettings["FacebookAppId"] 
+                + "&client_secret=" 
+                + ConfigurationManager.AppSettings["FacebookAppSecret"] 
+                + "&fb_exchange_token=" + accessTokenInfo.access_token);
             HttpWebRequest eat = (HttpWebRequest)HttpWebRequest.Create(eatTargetUri);
 
             StreamReader eatStr = new StreamReader(eat.GetResponse().GetResponseStream());
@@ -53,7 +60,8 @@ namespace FacebookLoginASPnetWebForms.account
             string extendedAccessToken = eatWords[0];
 
             // Request the Facebook user information
-            Uri targetUserUri = new Uri("https://graph.facebook.com/me?fields=first_name,last_name,gender,locale,link&access_token=" + accessToken);
+            Uri targetUserUri = new Uri("https://graph.facebook.com/me?fields=first_name,last_name,gender,locale,link&access_token=" 
+                + accessTokenInfo.access_token);
             HttpWebRequest user = (HttpWebRequest)HttpWebRequest.Create(targetUserUri);
 
             // Read the returned JSON object response
@@ -62,7 +70,6 @@ namespace FacebookLoginASPnetWebForms.account
             jsonResponse = userInfo.ReadToEnd();
 
             // Deserialize and convert the JSON object to the Facebook.User object type
-            JavaScriptSerializer sr = new JavaScriptSerializer();
             string jsondata = jsonResponse;
             Facebook.User converted = sr.Deserialize<Facebook.User>(jsondata);
 
